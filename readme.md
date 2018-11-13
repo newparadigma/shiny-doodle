@@ -1,16 +1,12 @@
 ## Развёртка приложения в docker окружении для разработки
 
-1. Клонируем репозиторий: ``
-2. Помещаем дамп БД в корень проекта с именем db.sql.gz
-3. Устанавливаем необходимые права: `chmod -R 777 storage/ bootstrap/cache`
-4. Создаём фаил `docker/nginx.conf` по образцу `docker/nginx.conf.example`
-5. Создаём фаил `docker-compose.yml` по образцу `docker-compose.yml.example`
-6. Устанавливаем docker и docker-compose.
-7. Создаём контейнеры и собираем проект: `docker-compose up`
-8. Устанавливаем зависимости проекта: `docker-compose exec app composer install` (Выполнить в 2ой консоли)
-9. Применяем миграции: `docker-compose exec app php artisan migrate` (Выполнить в 2ой консоли)
-0. ???
-0. PROFIT!
+1. Клонируем репозиторий: `git clone https://github.com/newparadigma1/shiny-doodle`
+2. Устанавливаем необходимые права: `chmod -R 777 storage/ bootstrap/cache`
+3. Устанавливаем docker и docker-compose.
+4. Создаём контейнеры и собираем проект: `docker-compose up`
+5. Устанавливаем зависимости проекта: `docker-compose exec app composer install` (Выполнить в 2ой консоли)
+6. Применяем миграции: `docker-compose exec app php artisan migrate` (Выполнить в 2ой консоли)
+
 После сборки проекта, контейнеры уже будут находится в рабочем состоянии.
 Завершить их работу можно выполнив `CTRL + C` в консоли.
 
