@@ -30,13 +30,11 @@ class User extends Authenticatable
 
     public function news()
     {
-      // code...
       return $this->hasMany('App\News', 'user_id');
-
     }
+
     public function roles()
     {
-      // code...
       return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
 
     }

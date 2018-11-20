@@ -5,10 +5,10 @@
       <h5 class="panel-title">Создание пользователя</h5>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="{{ route('users.createUser') }}" method="post">
+      <form class="form-horizontal" action="{{ route('users.create') }}" method="post">
         @csrf
-        <fieldset class="content-group">
 
+        <fieldset class="content-group">
           <div class="form-group">
             <label class="control-label col-lg-2">Введите имя</label>
             <div class="col-lg-10">
@@ -36,8 +36,7 @@
           <div class="form-group">
             <label class="control-label col-lg-2">Подтвердите пароль</label>
             <div class="col-lg-10">
-              <input type="password" name="confirm_password" class="form-control" required
-              placeholder="пароль...">
+              <input type="password" name="confirm_password" class="form-control" required placeholder="пароль...">
             </div>
           </div>
 

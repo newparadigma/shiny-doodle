@@ -19,10 +19,21 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/users/userList', 'UserController@userList')->name('users.userList');
-Route::get('/users/profile/{id}', 'UserController@profile')->name('users.profile');
-Route::get('/users/newUser', 'UserController@newUser')->name('users.newUser');
-Route::post('/users/createUser', 'UserController@createUser')->name('users.createUser');
+Route::group(['middleware' => 'auth'], function() {
+
+});
+
+Route::group(['prefix' => 'users'], function() {
+  Route::get('list', 'UserController@list')->name('users.list');
+  Route::get('profile/{id}', 'UserController@profile')->name('users.profile');
+  Route::get('new', 'UserController@new')->name('users.new');
+  Route::post('create', 'UserController@create')->name('users.create');
+  Route::get('edit/{id}', 'UserController@edit')->name('users.edit');
+  Route::post('update/{id}', 'UserController@update')->name('users.update');
+});
+
+
+
 Route::get('/users/newRoles/{id}', 'UserController@newRoles')->name('users.newRoles');
 Route::post('/users/updateRole/{id}', 'UserController@updateRole')->name('users.updateRole');
 

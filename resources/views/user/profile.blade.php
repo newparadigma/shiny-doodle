@@ -24,23 +24,27 @@
             <td>{{ $user->email }} </td>
           </tr>
           <tr>
-            <td>data: </td>
+            <td>Дата создания: </td>
             <td>{{ $user->created_at }} </td>
           </tr>
           <tr>
             <td>Роли: </td>
-            <td>{{ $user->roles }} </td>
+            <td>
+              @if ($user->roles->count() > 0)
+                <ul>
+                  @foreach ($user->roles as $role)
+                    <li>{{ $role->name }}</li>
+                  @endforeach
+                </ul>
+              @else
+                Нет
+              @endif
+            </td>
           </tr>
-          {{-- @foreach ($user->news as $news)
-            <tr>
-              <td>Новости: </td>
-              <td>{{$news->title}}</td>
-            </tr>
-          @endforeach --}}
-            <a href="{{ route('users.newRoles', $user->id)}}">Дать роль</a>
         </tbody>
       </table>
     </form>
+    <a href="{{ route('users.edit', $user->id) }}">Редактировать</a>
     </div>
   </div>
 @endsection

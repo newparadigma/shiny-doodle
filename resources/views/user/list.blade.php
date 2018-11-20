@@ -5,7 +5,6 @@
       <h5 class="panel-title">Пользователи</h5>
     </div>
     <div class="panel-body">
-      Таблица
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -16,17 +15,17 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($users as $key => $users)
+          @foreach ($users as $user)
             <tr>
-              <td>{{$users->id}}</td>
-              <td><a href="{{ route('users.profile', $users->id)}}">{{$users->name}}</a></td>
-              <td>{{$users->email}}</td>
-              <td>{{$users->created_at}}</td>
+              <td>{{ $user->id }}</td>
+              <td><a href="{{ route('users.profile', $user->id)}}">{{$user->name}}</a></td>
+              <td>{{ $user->email }}</td>
+              <td>{{ $user->created_at }}</td>
             </tr>
           @endforeach
         </tbody>
       </table>
-          <a href="{{ route('users.newUser')}}">Создать пользователя</a>
+      <a href="{{ route('users.new')}}">Создать пользователя</a>
     </div>
   </div>
 @endsection
