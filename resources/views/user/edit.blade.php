@@ -7,7 +7,7 @@
 @section('content')
   <div class="panel panel-flat">
     <div class="panel-heading">
-      <h5 class="panel-title">Создание пользователя</h5>
+      <h5 class="panel-title">Редактирование пользователя</h5>
     </div>
     <div class="panel-body">
       <form class="form-horizontal" action="{{ route('users.update', $user->id) }}" method="post">
@@ -59,7 +59,7 @@
 
           <div class="text">
             <button type="submit" class="btn btn-primary">
-              Создать
+              Редактировать
               <i class="icon-arrow-right14 position-right"></i>
             </button>
           </div>

@@ -18,13 +18,13 @@
           @foreach ($roles as $key => $roles)
             <tr>
               <td>{{$roles->id}}</td>
-              <td>{{$roles->name}}</td>
+              <td><a href="{{ route('roles.profile', $roles->id)}}">{{$roles->name}}</a></td>
               <td>{{$roles->created_at}}</td>
             </tr>
           @endforeach
         </tbody>
       </table>
-          <a href="{{ route('roles.newRole')}}">Добавить роль</a>
+          <a href="{{ route('roles.new')}}">Добавить роль</a>
     </div>
   </div>
 @endsection

@@ -9,22 +9,22 @@ use \App\News;
 class NewsController extends Controller
 {
 
-    public function newsList()
+    public function list()
     {
         $news = News::all();
-        return view('news.newsList', compact('news'));
+        return view('news.list', compact('news'));
     }
-    public function newNews()
+    public function new()
     {
-        return view('news.newNews');
+        return view('news.new');
     }
-    public function createNews(Request $request) {
+    public function create(Request $request) {
          $news = new \App\News();
          $news->title = $request->title;
          $news->text = $request->text;
          // dd(auth()->user()->id);
          $news->user_id = auth()->user()->id;
          $news->save();
-         return redirect()->route('news.newsList');
+         return redirect()->route('news.list');
     }
 }

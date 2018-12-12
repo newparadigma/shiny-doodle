@@ -20,7 +20,7 @@
               <td>{{ $user->id }}</td>
               <td><a href="{{ route('users.profile', $user->id)}}">{{$user->name}}</a></td>
               <td>{{ $user->email }}</td>
-              <td>{{ $user->created_at }}</td>
+              <td>{{ $user->time('d.m') }}  <br> {{ $user->time('Y')}} </td>
             </tr>
           @endforeach
         </tbody>

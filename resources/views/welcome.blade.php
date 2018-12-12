@@ -10,11 +10,11 @@
 <body>
   <div class="flex-center position-ref full-height">
 
-    <div class="top-right links">
+    {{-- <div class="top-right links">
       <a href="/">На главную</a>
       <a href="/">Войти</a>
       <a href="/">Зарегистрироваться</a>
-    </div>
+    </div> --}}
 
     <div class="content">
       <div class="title m-b-md">
@@ -23,9 +23,10 @@
 
       <div class="links">
         <a href="{{ route('users.list') }}">Пользователи</a>
-        <a href="/books/booksList">Список книг</a>
-        <a href="/news/newsList">Новости</a>
-        <a href="/roles/rolesList">Роли</a>
+        <a href="{{ route('books.list') }}">Список книг</a>
+        <a href="{{ route('news.list') }}">Новости</a>
+        <a href="{{ route('roles.list') }}">Роли</a>
+        <a href="{{ route('permissions.list') }}">Права</a>
       </div>
     </div>
   </div>

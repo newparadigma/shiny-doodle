@@ -26,7 +26,11 @@
           @endforeach
         </tbody>
       </table>
-          <a href="{{ route('books.newBook')}}">Добавить книгу</a>
+
+        @if (auth()->user()->hasPermission("Add new book"))
+          <a href="{{ route('books.new')}}">Добавить книгу</a>
+        @endif
+
     </div>
   </div>
 @endsection

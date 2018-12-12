@@ -9,21 +9,44 @@ use \App\Role;
 class RoleController extends Controller
 {
 
-    public function rolesList()
+    public function list()
     {
         $roles = Role::all();
-        return view('roles.rolesList', compact('roles'));
+        return view('roles.list', compact('roles'));
     }
-    public function newRole()
+    public function profile($id)
     {
-        return view('roles.newRole');
+      $roles = Role::findOrFail($id);
+      return view('roles.profile', compact('roles'));
     }
-    public function createRole(Request $request) {
+    public function new()
+    {
+        return view('roles.new');
+    }
+    public function create(Request $request) {
          $roles = new \App\Role();
          $roles->name = $request->name;
          $roles->save();
-         return redirect()->route('roles.rolesList');
+         return redirect()->route('roles.list');
+    }
+    public function edit($id)
+    {
+      $roles = Role::findOrFail($id);
+      return view('roles.edit', compact('roles'));
     }
 
+    public function update($id, Request $request) {
+      $roles = Role::findOrFail($id);
+      $roles->name = $request->name;
+      $roles->update();
+      $roles->permissions()->sync($request->permissionsIds);
+      return redirect()->route('roles.profile', $roles->id);
+    }
+
+    public function delete($id) {
+      $roles = Role::findOrFail($id);
+      $roles->delete();
+      return redirect()->route('roles.list');
+    }
 
 }

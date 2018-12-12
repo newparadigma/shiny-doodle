@@ -9,21 +9,21 @@ use \App\Book;
 class BookController extends Controller
 {
 
-    public function booksList()
+    public function list()
     {
         $books = Book::all();
-        return view('books.booksList', compact('books'));
+        return view('books.list', compact('books'));
     }
-    public function newBook()
+    public function new()
     {
-        return view('books.newBook');
+        return view('books.new');
     }
-    public function createBook(Request $request) {
+    public function create(Request $request) {
          $book = new \App\Book();
          $book->name = $request->name;
          $book->description = $request->description;
          $book->save();
-         return redirect()->route('books.booksList');
+         return redirect()->route('books.list');
     }
 
 

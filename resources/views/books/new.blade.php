@@ -5,7 +5,7 @@
       <h5 class="panel-title">Новая книга</h5>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="{{ route('roles.createRole') }}" method="post">
+      <form class="form-horizontal" action="{{ route('books.create') }}" method="post">
         @csrf
         <fieldset class="content-group">
 
@@ -13,6 +13,14 @@
             <label class="control-label col-lg-2">Название</label>
             <div class="col-lg-10">
               <input type="text" name="name" class="form-control" required
+              placeholder="...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-lg-2">Текст</label>
+            <div class="col-lg-10">
+              <input type="text" name="description" class="form-control" required
               placeholder="...">
             </div>
           </div>

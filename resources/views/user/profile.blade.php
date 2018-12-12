@@ -41,10 +41,45 @@
               @endif
             </td>
           </tr>
+          <tr>
+            <td>Права: </td>
+            <td>
+              @if (count($user->permissions()) > 0)
+                  <ul>
+                    @foreach ($user->permissions() as $permission)
+                      <li>
+                        {{ $permission->name }} {{ $permission->id }}
+                        <br>
+                        <ul>
+                        @foreach ($permission->roles as $role)
+                          <li> {{ $role->name }} </li>
+                        @endforeach
+                        </ul>
+                      </li>
+                    @endforeach
+                  </ul>
+              @else
+                Нет
+              @endif
+            </td>
+          </tr>
+          <tr>
+            <td> Колличество прав </td>
+            <td>
+             {{ count($user->permissions()) }}
+            </td>
+          </tr>
         </tbody>
       </table>
     </form>
     <a href="{{ route('users.edit', $user->id) }}">Редактировать</a>
+    <form class="form-horizontal" action="{{ route('users.delete', $user->id) }}" method="post">
+      @csrf
+      <button type="submit" class="btn btn-primary">
+        Удалить
+        <i class="icon-arrow-right14 position-right"></i>
+      </button>
+    </form>
     </div>
   </div>
 @endsection

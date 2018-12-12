@@ -38,4 +38,34 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
 
     }
+    public function permissions()
+    {
+      $array = [];
+      foreach ($this->roles as $role) {
+        foreach ($role->permissions as $permission) {
+          $array[$permission->name] = $permission;
+        }
+      }
+      return $array;
+    }
+    public function hasRole($name)
+    {
+      foreach ($this->roles as $role) {
+        if ($name == $role->name) {
+          return true;
+        }
+      }
+    }
+    public function hasPermission($name)
+    {
+      foreach ($this->roles as $role) {
+          if ($role->hasPermission($name)){
+            return true;
+          }
+      }
+    }
+    public function time($huh)
+    {
+      return date($huh, strtotime($this->created_at));
+    }
 }

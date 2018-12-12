@@ -23,7 +23,8 @@ class UserController extends Controller
   public function profile($id)
   {
     $user = User::findOrFail($id);
-    return view('user.profile', compact('user'));
+    // $roles = Role::findOrFail($id);
+    return view('user.profile', compact('user', 'roles'));
   }
 
   public function new()
@@ -52,7 +53,7 @@ class UserController extends Controller
   public function update($id, Request $request) {
     if ($request->password) {
       if (!$this->requestValidate($request)) {
-        return redirect()->back();
+        return redirect()->back()->withInput();
       }
     }
 
@@ -66,5 +67,11 @@ class UserController extends Controller
 
     $user->roles()->sync($request->roleIds);
     return redirect()->route('users.profile', $user->id);
+  }
+
+  public function delete($id) {
+    $user = User::findOrFail($id);
+    $user->delete();
+    return redirect()->route('users.list');
   }
 }

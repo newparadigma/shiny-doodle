@@ -10,8 +10,9 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Имя</th>
-            <th>Email</th>
+            <th>Название новости</th>
+            <th>Текст</th>
+            <th>Автор</th>
             <th>Время добавления</th>
           </tr>
         </thead>
@@ -21,20 +22,19 @@
                 <td colspan="4"><a href="{{ route('users.profile', $user->id) }}">{{ $user->name }}</a></td>
               </tr> --}}
               @foreach ($news as $new)
-
                 <tr>
                   <td>{{$new->id}}</td>
                   <td>{{$new->title}}</td>
                   <td>{{$new->text}}</td>
-                  <td>{{$new->created_at}}</td>
-                </tr>
-                <tr>
                   <td>{{ $new->user->name }}</td>
+                  <td>{{$new->created_at}}</td>
                 </tr>
           @endforeach
         </tbody>
       </table>
-          <a href="{{ route('news.newNews')}}">Создать новость</a>
+
+          <a href="{{ route('news.new')}}">Создать новость</a>
+
     </div>
   </div>
 @endsection
